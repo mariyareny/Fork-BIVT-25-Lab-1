@@ -85,7 +85,6 @@
 
             return answer;
         }
-
         public double Task7(double d, double f)
         {
             int answer = 0;
@@ -114,21 +113,31 @@
         {
             bool answer = false;
 
-            int coinsA = a / 2;
-            int coinsB = b / 2;
-            int coinsC = c / 2;
+            // code here
+            int A = a / 2;
+            int B = b / 2;
+            int C = c / 2;
 
-            if (coinsA + coinsB + coinsC + 1 < 3)
-                return false;
+            int total = A + B + C;
 
-            for (int target = 1; target <= Math.Max(Math.Max(coinsA, coinsB), coinsC + 1); target++)
+            if (total % 3 == 0)
             {
-                int needed = target - coinsA + target - coinsB + target - coinsC;
-                if (needed == 0 || (needed == 1 && coinsC + 1 >= target))
+                int k = total / 3;
+                if (k >= 1 && k <= a && k <= b && k <= c)
+                    answer = true;
+            }
+
+            if (!answer)
+            {
+                total = A + B + C + 1;
+                if (total % 3 == 0)
                 {
-                    return true;
+                    int k = total / 3;
+                    if (k >= 1 && k <= a && k <= b && k <= c && k <= C + 1)
+                        answer = true;
                 }
             }
+            // end
 
             return answer;
         }
